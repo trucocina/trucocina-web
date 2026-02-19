@@ -1,54 +1,195 @@
+:root {
+    --primary-color: #A0522D; /* Cobre Oscuro, para acentos y textos clave */
+    --secondary-color: #D2B48C; /* Beige claro, para fondos suaves */
+    --text-color: #333333; /* Texto principal oscuro */
+    --light-text-color: #666666; /* Texto secundario */
+    --white-color: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Roboto', sans-serif; /* Usaremos una fuente más moderna */
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     margin: 0;
     text-align: center;
+    line-height: 1.6;
 }
 
-header {
-    background-color: #003f5c;
-    color: white;
-    padding: 60px 20px;
+/* Header - Sección Hero */
+.hero {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 80px 20px 60px;
+    position: relative;
+    overflow: hidden; /* Para evitar desbordamientos si hay elementos flotantes */
 }
 
-h1 { margin: 10px 0; }
+.hero::before { /* Un ligero gradiente para el fondo */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+}
 
-.features {
+.logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+    position: relative; /* Para que esté por encima del pseudo-elemento */
+    z-index: 1;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 10px 0;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+.tagline {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 20px auto 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Botones de Tienda (Estilo con iconos reales) */
+.store-buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding: 40px 20px;
-    flex-wrap: wrap;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
 }
 
-.feature-item {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    font-weight: bold;
-    color: #003f5c;
-    min-width: 150px;
+.btn {
+    display: block; /* Para que la imagen ocupe todo el espacio */
+    width: 150px; /* Ancho de cada botón */
+    height: 50px; /* Alto de cada botón */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-indent: -9999px; /* Oculta el texto pero lo mantiene accesible para lectores de pantalla */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
-.download {
-    padding: 40px 20px;
+.btn:hover {
+    transform: translateY(-3px);
 }
 
-.btn-disabled {
-    background-color: #a0a0a0;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 5px;
-    margin: 10px;
-    display: inline-block;
+/* Imágenes de los botones (usando imágenes reales de logos de tiendas) */
+.app-store-btn {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg'); /* Logo de App Store */
 }
 
+.google-play-btn {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg'); /* Logo de Google Play */
+}
+
+
+/* Sección de Características */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
+    gap: 30px;
+    padding: 60px 40px;
+    background-color: var(--white-color); /* Fondo blanco para destacar */
+}
+
+.feature-card {
+    background: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card .icon {
+    font-size: 2.5em;
+    display: block;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.feature-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: var(--light-text-color);
+    font-size: 0.95em;
+}
+
+/* Sección de Llamada a la Acción */
+.call-to-action {
+    background-color: var(--secondary-color);
+    padding: 80px 20px;
+}
+
+.call-to-action h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.call-to-action p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: var(--light-text-color);
+}
+
+
+/* Footer */
 footer {
-    padding: 20px;
-    font-size: 0.8em;
-    color: #777;
+    padding: 30px 20px;
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    background-color: #e0e0e0; /* Un gris más claro para el footer */
 }
 
-footer a { color: #003f5c; }
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2em; }
+    .tagline { font-size: 1em; }
+    .features-grid {
+        padding: 40px 20px;
+        gap: 20px;
+    }
+    .call-to-action h2 { font-size: 2em; }
+    .store-buttons { flex-direction: column; align-items: center; }
+    .btn { margin-bottom: 15px; } /* Espacio entre botones en vista móvil */
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.8em; }
+    .tagline { font-size: 0.9em; }
+    .hero { padding: 60px 15px 40px; }
+    .store-buttons { gap: 10px; }
+    .btn { width: 130px; height: 45px; } /* Botones ligeramente más pequeños en móvil */
+}
