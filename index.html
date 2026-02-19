@@ -5,25 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TruCocina - App de Trucos y Medidas</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="icon" href="logo.png" type="image/png"> </head>
 <body>
-    <header>
+    <header class="hero">
+        <img src="logo.png" alt="TruCocina Logo" class="logo">
         <h1>TruCocina</h1>
-        <p>Tus trucos y medidas de cocina, siempre a mano.</p>
+        <p class="tagline">Tus trucos y medidas de cocina, siempre a mano. ¡Descubre el secreto de un chef en tu bolsillo!</p>
+        <div class="store-buttons">
+            <a href="#" class="btn app-store-btn" aria-label="Descargar en App Store"></a>
+            <a href="#" class="btn google-play-btn" aria-label="Descargar en Google Play"></a>
+        </div>
     </header>
 
     <main>
-        <section class="features">
-            <div class="feature-item">⏱️ Tiempos de Cocción</div>
-            <div class="feature-item">🧮 Calculadoras</div>
-            <div class="feature-item">💡 Trucos Salvavidas</div>
+        <section class="features-grid">
+            <div class="feature-card">
+                <span class="icon">⏱️</span>
+                <h3>Tiempos de Cocción</h3>
+                <p>Calcula y temporiza la cocción perfecta para cada alimento.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🧮</span>
+                <h3>Calculadoras Inteligentes</h3>
+                <p>Las cantidades exactas para cada plato y cada ocasión.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">💡</span>
+                <h3>Trucos Salvavidas</h3>
+                <p>Descubre atajos y consejos de chef para tu día a día.</p>
+            </div>
         </section>
 
-        <section class="download">
-            <h2>Próximamente en tu móvil</h2>
+        <section class="call-to-action">
+            <h2>¿Listo para cocinar como un experto?</h2>
+            <p>La cocina nunca fue tan fácil. ¡Simplifica tus recetas y sorprende a todos!</p>
             <div class="store-buttons">
-                <span class="btn-disabled">App Store</span>
-                <span class="btn-disabled">Google Play</span>
+                <a href="#" class="btn app-store-btn" aria-label="Descargar en App Store"></a>
+                <a href="#" class="btn google-play-btn" aria-label="Descargar en Google Play"></a>
             </div>
         </section>
     </main>
