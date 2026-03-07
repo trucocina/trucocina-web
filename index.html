@@ -1,53 +1,313 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TruCocina - App de Trucos y Medidas</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.png" type="image/png"> </head>
-<body>
-    <header class="hero">
-        <img src="logo.png" alt="TruCocina Logo" class="logo">
-        <h1>TruCocina</h1>
-        <p class="tagline">Tus trucos y medidas de cocina, siempre a mano. ¡Descubre el secreto de un chef en tu bolsillo!</p>
-        <div class="store-buttons">
-            <a href="#" class="btn app-store-btn" aria-label="Descargar en App Store"></a>
-            <a href="#" class="btn google-play-btn" aria-label="Descargar en Google Play"></a>
-        </div>
-    </header>
+	<head>
+		<title>TruCocina — Tu compañero en la cocina</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="TruCocina: guías de cocina, calculadoras de raciones, tiempos de cocción y trucos de rescate. Tu compañero en la cocina del día a día." />
+		<link rel="icon" type="image/png" href="favicon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600;1,700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Hero: blanco arriba → verde TruCocina abajo */
+			#header {
+				background-color: #2d6a1f !important;
+				background-image: linear-gradient(to bottom, #ffffff 0%, #e8f5e1 28%, #6dbf45 62%, #2d6a1f 100%) !important;
+				background-attachment: scroll !important;
+				background-size: cover !important;
+			}
+			#header .inner h1,
+			#header .inner p,
+			#header .inner strong {
+				color: #ffffff !important;
+				text-shadow: 0 1px 8px rgba(0,0,0,0.45) !important;
+			}
+			#header .inner h1 {
+				font-size: 3.5rem !important;
+				font-family: 'Montserrat', sans-serif !important;
+				font-weight: 700 !important;
+				font-style: italic !important;
+				letter-spacing: 0.08em !important;
+				text-transform: uppercase !important;
+			}
+			#header .inner ul.actions.special a.button {
+				border-color: #ffffff !important;
+				color: #ffffff !important;
+				background: transparent !important;
+			}
+			#header .inner ul.actions.special a.button:hover {
+				background: #ffffff !important;
+				color: #2d6a1f !important;
+			}
+			/* Ocultar línea de scroll del template */
+			#header .actions:after {
+				display: none !important;
+			}
 
-    <main>
-        <section class="features-grid">
-            <div class="feature-card">
-                <span class="icon">⏱️</span>
-                <h3>Tiempos de Cocción</h3>
-                <p>Calcula y temporiza la cocción perfecta para cada alimento.</p>
-            </div>
-            <div class="feature-card">
-                <span class="icon">🧮</span>
-                <h3>Calculadoras Inteligentes</h3>
-                <p>Las cantidades exactas para cada plato y cada ocasión.</p>
-            </div>
-            <div class="feature-card">
-                <span class="icon">💡</span>
-                <h3>Trucos Salvavidas</h3>
-                <p>Descubre atajos y consejos de chef para tu día a día.</p>
-            </div>
-        </section>
+			/* Footer: verde oscuro arriba → blanco abajo */
+			#footer {
+				background-color: #2d6a1f !important;
+				background-image: linear-gradient(to bottom, #2d6a1f 0%, #6dbf45 50%, #a8d88a 100%) !important;
+				background-attachment: scroll !important;
+			}
+			#footer .icons a,
+			#footer .copyright li,
+			#footer .copyright li a {
+				color: #ffffff !important;
+			}
+			#footer .icons a:hover {
+				color: #e8f5e1 !important;
+			}
 
-        <section class="call-to-action">
-            <h2>¿Listo para cocinar como un experto?</h2>
-            <p>La cocina nunca fue tan fácil. ¡Simplifica tus recetas y sorprende a todos!</p>
-            <div class="store-buttons">
-                <a href="#" class="btn app-store-btn" aria-label="Descargar en App Store"></a>
-                <a href="#" class="btn google-play-btn" aria-label="Descargar en Google Play"></a>
-            </div>
-        </section>
-    </main>
+			/* App icon en el hero */
+			#header .inner img.app-icon {
+				width: 120px;
+				height: 120px;
+				border-radius: 26px;
+				box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+				margin-bottom: 0.75rem;
+				margin-top: -2rem;
+			}
 
-    <footer>
-        <p>&copy; 2024 TruCocina.app | <a href="#">Política de Privacidad</a></p>
-    </footer>
-</body>
+			/* Store badges */
+			.store-buttons {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+				flex-wrap: wrap;
+				align-items: center;
+				margin-top: 1.5rem;
+			}
+			.store-btn {
+				display: inline-block;
+				text-decoration: none !important;
+				border-bottom: none !important;
+				outline: none;
+				line-height: 0;
+				transition: transform 0.15s, opacity 0.15s;
+			}
+			.store-btn:hover { transform: translateY(-2px); opacity: 0.88; }
+			.store-btn:focus { outline: none; }
+			.store-btn img { height: 44px; width: auto; display: block; }
+			.store-btn img[alt*="Google"] { height: 56px; }
+
+			/* Captura de pantalla centrada */
+			.screenshot-wrap {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 1rem 0;
+			}
+			.screenshot-wrap img {
+				max-width: 260px;
+				border-radius: 32px;
+				box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+			}
+
+			/* Galería de capturas */
+			.screenshots-row {
+				display: flex;
+				gap: 1.5rem;
+				justify-content: center;
+				align-items: flex-end;
+				flex-wrap: wrap;
+				margin-top: 2rem;
+			}
+			.screenshot-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.5rem;
+			}
+			.screenshot-item img {
+				width: 160px;
+				border-radius: 22px;
+				box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+			}
+			.screenshot-label {
+				font-size: 0.85rem;
+				color: #666;
+				font-weight: 600;
+				margin: 0;
+			}
+			@media (max-width: 768px) {
+				.screenshot-item img { width: 120px; }
+				.screenshots-row { gap: 1rem; }
+			}
+
+			/* Iconos de features con color verde */
+			#two .icon.major { color: #6dbf45 !important; }
+
+			/* Capturas clicables */
+			.screenshot-item a { display: block; text-decoration: none; }
+			.screenshot-item a img { transition: transform 0.2s, box-shadow 0.2s; }
+			.screenshot-item a:hover img {
+				transform: translateY(-4px) scale(1.03);
+				box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+			}
+			.screenshot-label a { color: #666; text-decoration: none; font-weight: 600; }
+			.screenshot-label a:hover { color: #2d6a1f; }
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<section id="header">
+			<div class="inner">
+				<img class="app-icon" src="images/icon.png" alt="TruCocina" />
+				<h1><strong>TruCocina</strong></h1>
+				<p>Guías, tiempos, calculadoras y trucos de rescate.<br />
+				Tu compañero en la cocina del día a día.</p>
+				<ul class="actions special">
+					<li><a href="#app" class="button scrolly">Descúbrela</a></li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Qué es TruCocina -->
+		<section id="one" class="main style1">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>Cocina mejor, sin complicaciones</h2>
+						</header>
+						<p>TruCocina nace de una idea sencilla: que cocinar en casa sea más fácil y más satisfactorio. Tanto si eres principiante como si llevas años entre fogones, siempre hay algo que consultar.</p>
+						<p>Sin suscripciones, sin publicidad, sin necesidad de crear una cuenta. Todo funciona en tu dispositivo, sin conexión a internet.</p>
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<div class="screenshot-wrap">
+							<img src="images/captura.png" alt="Captura de TruCocina" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Funciones -->
+		<section id="two" class="main style2">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<ul class="major-icons">
+							<li><span class="icon solid style1 major fa-clock"></span></li>
+							<li><span class="icon solid style2 major fa-calculator"></span></li>
+							<li><span class="icon solid style3 major fa-book-open"></span></li>
+							<li><span class="icon solid style4 major fa-ambulance"></span></li>
+							<li><span class="icon solid style5 major fa-shield-alt"></span></li>
+							<li><span class="icon solid style6 major fa-mobile-alt"></span></li>
+						</ul>
+					</div>
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>Todo lo que necesitas<br />en un solo lugar</h2>
+						</header>
+						<p><strong>Tiempos de cocción</strong> — Consulta al instante cuánto tarda cualquier ingrediente al horno, al vapor o a la plancha, y a qué temperatura.</p>
+						<p><strong>Calculadoras</strong> — Ajusta cantidades para el número de comensales que quieras: pizzas, barbacoas, bebidas y más.</p>
+						<p><strong>Guías</strong> — Técnicas básicas, ingredientes de temporada y consejos prácticos explicados sin rodeos.</p>
+						<p><strong>SOS Cocina</strong> — ¿Se te ha pasado el arroz? ¿La salsa quedó demasiado salada? Soluciones rápidas para los errores más comunes.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Capturas -->
+		<section id="capturas" class="main style1 special">
+			<div class="container">
+				<header class="major">
+					<h2>La app por dentro</h2>
+				</header>
+				<p>Cinco secciones, todo lo que necesitas en la cocina.</p>
+				<div class="screenshots-row">
+					<div class="screenshot-item">
+						<a href="capturas/inicio.html">
+							<img src="images/captura.png" alt="Inicio" />
+						</a>
+						<p class="screenshot-label"><a href="capturas/inicio.html">Inicio</a></p>
+					</div>
+					<div class="screenshot-item">
+						<a href="capturas/tiempos.html">
+							<img src="images/tiempos.png" alt="Tiempos de cocción" />
+						</a>
+						<p class="screenshot-label"><a href="capturas/tiempos.html">Tiempos</a></p>
+					</div>
+					<div class="screenshot-item">
+						<a href="capturas/calculadoras.html">
+							<img src="images/calculadoras.png" alt="Calculadoras" />
+						</a>
+						<p class="screenshot-label"><a href="capturas/calculadoras.html">Calculadoras</a></p>
+					</div>
+					<div class="screenshot-item">
+						<a href="capturas/guias.html">
+							<img src="images/guias.png" alt="Guías" />
+						</a>
+						<p class="screenshot-label"><a href="capturas/guias.html">Guías</a></p>
+					</div>
+					<div class="screenshot-item">
+						<a href="capturas/sos.html">
+							<img src="images/sos-cocina.png" alt="SOS Cocina" />
+						</a>
+						<p class="screenshot-label"><a href="capturas/sos.html">SOS Cocina</a></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Descarga -->
+		<section id="app" class="main style1 special">
+			<div class="container">
+				<header class="major">
+					<h2>Descarga TruCocina</h2>
+				</header>
+				<p>Disponible para iPhone y Android. Gratis, sin anuncios, sin suscripciones.</p>
+				<div class="store-buttons">
+					<a href="#" class="store-btn">
+						<img src="images/badge-appstore.svg" alt="Descarga en el App Store" />
+					</a>
+					<a href="#" class="store-btn">
+						<img src="images/badge-googleplay.png" alt="Disponible en Google Play" />
+					</a>
+				</div>
+				<p style="margin-top:2rem; font-size:0.85rem; color:#aaa;">Próximamente en las tiendas</p>
+			</div>
+		</section>
+
+		<!-- Contacto -->
+		<section id="four" class="main style2 special">
+			<div class="container">
+				<header class="major">
+					<h2>¿Tienes alguna sugerencia?</h2>
+				</header>
+				<p>Escríbenos. Cada sugerencia cuenta para mejorar la app.</p>
+				<ul class="actions special">
+					<li><a href="mailto:hola@trucocina.app" class="button wide primary">Contactar</a></li>
+					<li><a href="privacidad.html" class="button wide">Política de privacidad</a></li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<section id="footer">
+			<ul class="icons">
+				<li><a href="mailto:hola@trucocina.app" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; 2025 TruCocina · Qinvix</li>
+				<li><a href="privacidad.html">Política de privacidad</a></li>
+				<li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</section>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
